@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+        <title>Health Haven - {{ title }}</title>
+    {% else %}
+        <title>Health Haven</title>
+    {% endif %}
+    <header>
+        <nav>
+            this is my nav
+        </nav>
+    </header>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
