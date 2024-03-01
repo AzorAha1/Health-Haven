@@ -1,4 +1,8 @@
 {% extends 'default.html' %}
 {% block content%}
-    <h1>login</h1>
+    {{ form.email.label }}
+    {{ form.email }}
+    {{ form.password.label }}
+    {{ form.password }}
+    {{ form.submit }}
 {% endblock %}

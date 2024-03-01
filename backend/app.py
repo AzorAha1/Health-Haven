@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for
 from auth import RegisterPatient, LoginPatient
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/styles')
-
+app.config['SECRET_KEY'] = 'd408adac2785c9429f66f099f0d2a4a4'
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
