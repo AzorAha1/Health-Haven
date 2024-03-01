@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../styles/nav.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% if title %}
@@ -9,8 +10,16 @@
         <title>Health Haven</title>
     {% endif %}
     <header>
-        <nav>
-            this is my nav
+        <nav class="nav">
+            <a href="/" class="nav-item">Health Haven</a>
+            <div class="nav-bio">
+                <a href="{{ url_for('home') }}" class="nav-item">Home</a>
+                <a href="{{ url_for('about') }}" class="nav-item">About</a>
+            </div>
+            <div class="nav-reg">
+                <a href="{{ url_for('login') }}" class="nav-item">Login</a>
+                <a href="{{ url_for('register') }}" class="nav-item">Register</a>
+            </div>
         </nav>
     </header>
 </head>

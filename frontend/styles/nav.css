@@ -1,0 +1,24 @@
+.nav{
+    background-color: transparent;
+    margin: 0%;
+    display: flex;
+}
+.nav-bio {
+    margin-left: 40px;
+}
+.nav-reg {
+    margin-left: auto;
+}
+.nav-item {
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 10px;
+    font-weight: bold;
+    color: rgb(61, 66, 66);
+}
+body {
+    background-image: url('../styles/images/bg2.jpeg');
+}
+.nav-item:hover {
+    color: rgb(129, 105, 75);
+}

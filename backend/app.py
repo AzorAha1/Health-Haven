@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for
 
-app = Flask(__name__, template_folder='../frontend/templates')
+app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/styles')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -8,7 +8,18 @@ app = Flask(__name__, template_folder='../frontend/templates')
 def home():
     """This brings a user to the home page of the app"""
     return render_template('home.html', title='Home')
-
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """This brings a user to the login page of the app"""
+    return render_template('login.html', title='Login')
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    """This brings a user to the register page of the app"""
+    return render_template('register.html', title='Login')
+@app.route('/about')
+def about():
+    """This brings a user to the about page of the app"""
+    return render_template('about.html', title='Home')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5030, debug=True)
