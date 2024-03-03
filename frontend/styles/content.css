@@ -1,0 +1,43 @@
+.content-box {
+    background-color: #7070701a;
+    padding-left: 10px;
+    padding-top: 15px;
+    width: 600px;
+    height: 500px;
+    margin-left: auto;
+    align-self: center;
+    border-radius: 20px;
+    backdrop-filter: blur(20px); 
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.design-font {
+    font-size: 25px;
+    color: black;
+    padding-bottom: 10px;
+}
+.design-field {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+.submit-design {
+    margin-top: 10px;
+    width: 250px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+   
+}
+.title {
+    color: black; 
+    justify-content: baseline;
+    text-align: center;
+    margin-bottom: 20px; 
+}

@@ -10,6 +10,6 @@ class RegisterPatient(FlaskForm):
     submit = SubmitField(label='Submit')
 
 class LoginPatient(FlaskForm):
-    email = EmailField(label='Email', validators=[DataRequired(), Email()])
-    password = PasswordField(label='Password', validators=[DataRequired()])
-    submit = SubmitField(label='Login')
+    email = EmailField(label='Email', validators=[DataRequired(), Email()], render_kw={'class': 'design-field'})
+    password = PasswordField(label='Password', validators=[DataRequired()], render_kw={'class': 'design-field'})
+    submit = SubmitField(label='Login', render_kw={'class': 'submit-design'})

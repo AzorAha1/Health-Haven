@@ -1,8 +1,13 @@
 {% extends 'default.html' %}
 {% block content%}
-    {{ form.email.label }}
-    {{ form.email }}
-    {{ form.password.label }}
-    {{ form.password }}
-    {{ form.submit }}
+    <div class="content-box">
+        <h2 class="title">Login</h2>
+        <label for="{{ form.email.id }}" class="design-font">{{ form.email.label }}</label><br>
+        {{ form.email }}<br>
+        <label for="{{ form.password.id }}" class="design-font">{{ form.password.label }}</label><br>
+        {{ form.password }}<br>
+        
+        {{ form.submit }}
+    </div>
+    
 {% endblock %}
