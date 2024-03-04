@@ -2,16 +2,22 @@
 {% block content%}
     <div class="content-box">
         <h2>Sign Up</h2>
-    <label class="design-font">{{ form.username.label }}</label>
-    {{ form.username }}
-    <label class="design-font">{{ form.email.label }}</label>
-    {{ form.email }}
-    <label class="design-font">{{ form.password.label }}</label>
-    {{ form.password }}
-    <label class="design-font">{{ form.confirm_password.label }}</label>
-    {{ form.confirm_password }}
-    <label class="design-font">{{ form.dob.label }}</label>
-    {{ form.dob }}
-    {{ form.submit }}
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <label class="design-font">{{ form.username.label }}</label>
+            {{ form.username }}
+            <label class="design-font">{{ form.email.label }}</label>
+            {{ form.email }}
+            <label class="design-font">{{ form.password.label }}</label>
+            {{ form.password }}
+            <label class="design-font">{{ form.confirm_password.label }}</label>
+            {{ form.confirm_password }}
+            <label class="design-font">{{ form.dob.label }}</label>
+            {{ form.dob }}
+            {{ form.submit }}
+            <small>Already have an Account ? 
+                <a href="{{ url_for('login') }}" style="text-decoration: none;">login</a>
+            </small>
+        </form>
     </div>
 {% endblock %}
