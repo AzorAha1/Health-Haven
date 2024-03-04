@@ -1,18 +1,15 @@
 .content-box {
     background-color: #7070701a;
     padding-left: 10px;
-    padding-top: 15px;
     width: 600px;
-    height: 500px;
+    height: 510px;
     margin-left: auto;
-    align-self: center;
     border-radius: 20px;
-    backdrop-filter: blur(20px); 
-    align-self: center;
+    backdrop-filter: blur(20px);
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+
 }
 
 .design-font {

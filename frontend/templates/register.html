@@ -1,4 +1,17 @@
 {% extends 'default.html' %}
 {% block content%}
-    <h1>Register</h1>
+    <div class="content-box">
+        <h2>Sign Up</h2>
+    <label class="design-font">{{ form.username.label }}</label>
+    {{ form.username }}
+    <label class="design-font">{{ form.email.label }}</label>
+    {{ form.email }}
+    <label class="design-font">{{ form.password.label }}</label>
+    {{ form.password }}
+    <label class="design-font">{{ form.confirm_password.label }}</label>
+    {{ form.confirm_password }}
+    <label class="design-font">{{ form.dob.label }}</label>
+    {{ form.dob }}
+    {{ form.submit }}
+    </div>
 {% endblock %}
