@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, EmailField, SubmitField, DateField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import DataRequired, Email, EqualTo, Length
 
 class RegisterPatient(FlaskForm):
-    username = StringField(label='Username', validators=[DataRequired()], render_kw={'class': 'design-field'})
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=30)], render_kw={'class': 'design-field'})
     email = EmailField(label='Email', validators=[DataRequired(), Email()], render_kw={'class': 'design-field'})
     password = PasswordField(label='Password', validators=[DataRequired()],render_kw={'class': 'design-field'})
     dob = DateField(validators=[DataRequired()], label='Date of birth')

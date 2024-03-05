@@ -5,7 +5,14 @@
         <form action="" method="post">
             {{ form.hidden_tag() }}
             <label class="design-font">{{ form.username.label }}</label>
-            {{ form.username }}
+            {% if form.username.errors %}
+            {{ form.username(class='invalid') }}
+                {% for error in form.username.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            {% else %}
+                {{ form.username }}
+            {% endif %}
             <label class="design-font">{{ form.email.label }}</label>
             {{ form.email }}
             <label class="design-font">{{ form.password.label }}</label>

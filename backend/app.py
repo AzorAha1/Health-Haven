@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for,redirect, flash
 from auth import RegisterPatient, LoginPatient
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/styles')
 app.config['SECRET_KEY'] = 'd408adac2785c9429f66f099f0d2a4a4'
@@ -17,6 +17,12 @@ def login():
 def register():
     """This brings a user to the register page of the app"""
     form = RegisterPatient()
+    if form.validate_on_submit():
+        flash(message=f'Account Created for {form.username.data}', category='success')
+        print(form.username.data)
+        return redirect(url_for('home'))
+    print(form.data)
+    print(form.errors) # Temporary debug line
     return render_template('register.html', title='Login', form=form)
 @app.route('/about')
 def about():
