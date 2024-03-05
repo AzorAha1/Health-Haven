@@ -1,8 +1,40 @@
 from flask import Flask, render_template, url_for,redirect, flash
 from auth import RegisterPatient, LoginPatient
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/styles')
 app.config['SECRET_KEY'] = 'd408adac2785c9429f66f099f0d2a4a4'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///health-haven.db'
 
+db = SQLAlchemy(app=app)
+
+
+
+class User(db.Model):
+    user_id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(60), unique=True, nullable=False)
+    username = db.Column(db.String(20), nullable=False, unique=True)
+    password = db.Column(db.String(30), nullable=False)
+
+class Doctor(db.Model):
+    doctor_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(60), nullable=False)
+    specialty = db.Column(db.String(60), nullable=False)
+    yearsofexperience = db.Column(db.Integer(), nullable=False)
+
+class Appointment(db.Model):
+    __tablename__ = 'appointments'
+    appointment_id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
+    doctor_id = db.Column(db.Integer, db.ForeignKey('doctor.doctor_id'))
+
+    user = db.relationship('User', backref=db.backref('appointments', lazy=True))
+    doctor = db.relationship('Doctor', backref=db.backref('appointments', lazy=True))
+
+
+    
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def home():
