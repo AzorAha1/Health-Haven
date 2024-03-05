@@ -60,6 +60,10 @@ def register():
 def about():
     """This brings a user to the about page of the app"""
     return render_template('about.html', title='Home')
+@app.route('/search', methods=['GET'])
+def search():
+    """Returns information that matches the parameters"""
+    return render_template('search.html', title='Search')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5030, debug=True)
