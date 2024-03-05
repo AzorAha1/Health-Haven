@@ -1,9 +1,9 @@
 .content-box {
     background-color: #7070701a;
-    padding-left: 10px;
+    padding: 20px;
     width: 600px;
-    height: 600px;
-    margin-left: auto;
+    height: auto; /* Adjusted height to accommodate content */
+    margin: 0 auto; /* Center the content box */
     border-radius: 20px;
     backdrop-filter: blur(20px);
     display: flex;
@@ -31,10 +31,18 @@
     color: white;
 }
 .title {
+    font-size: 30px;
     color: black; 
     justify-content: baseline;
     text-align: center;
     margin-bottom: 20px; 
+}
+
+.design-field {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    width: 100%;
 }
 
 form {
