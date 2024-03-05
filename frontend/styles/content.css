@@ -1,5 +1,5 @@
 .content-box {
-    background-color: #7070701a;
+    background-color: #70707048;
     padding: 20px;
     width: 600px;
     height: auto; /* Adjusted height to accommodate content */
@@ -13,10 +13,11 @@
 }
 .design-font {
     font-size: 25px;
-    color: black;
+    color: blue;
     padding-bottom: 10px;
 }
 .design-field {
+    color: crimson;
     font-size: 20px;
     margin-bottom: 10px;
     border-radius: 20px;
@@ -27,12 +28,12 @@
     height: 40px;
     font-size: 20px;
     border-radius: 20px;
-    background-color: black;
+    background-color: blueviolet;
     color: white;
 }
 .title {
     font-size: 30px;
-    color: black; 
+    color: blue (0, 0, 0); 
     justify-content: baseline;
     text-align: center;
     margin-bottom: 20px; 

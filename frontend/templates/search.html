@@ -1,0 +1,19 @@
+{% extends 'default.html' %}
+
+{% block content %}
+    <div class="content-box">
+        <h1 class="title">Search</h1>
+        <form action="{{ url_for('search') }}" method="GET">
+            <label for="specialization" class="design-font">Choose Specialization:</label>
+            <select name="specialization" id="specialization" class="design-field">
+                <option value="counselling">Counselling</option>
+                <option value="general-medicine">General Medicine</option>
+                <option value="endocrinology">Endocrinology</option>
+                <option value="physiotherapy">Physiotherapy</option>
+                <option value="dermatology">Dermatology</option>
+                <option value="dentistry">Dentistry</option>
+            </select>
+            <input type="submit" value="Search" class="submit-design">
+        </form>
+    </div>
+{% endblock %}
