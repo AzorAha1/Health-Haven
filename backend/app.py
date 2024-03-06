@@ -57,11 +57,13 @@ class Appointment(db.Model):
 def home():
     """This brings a user to the home page of the app"""
     return render_template('home.html', title='Home')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """This brings a user to the login page of the app"""
     form = LoginPatient()
     return render_template('login.html', title='Login', form=form)
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     """This brings a user to the register page of the app"""
@@ -75,15 +77,30 @@ def register():
         print(f"User {form.username.data} added to the database")
         return redirect(url_for('login'))
     return render_template('register.html', title='Login', form=form)
+
 @app.route('/about')
 def about():
     """This brings a user to the about page of the app"""
     return render_template('about.html', title='Home')
+
 @app.route('/search', methods=['GET'])
 def search():
     """Returns information that matches the parameters"""
     specialization = request.args.get('specialization')
-    return render_template('search.html', specialization=specialization)
+    
+    if specialization == 'counselling':
+        return render_template('specializations/counselling.html')
+    elif specialization == 'general-medicine':
+        return render_template('specializations/general-medicine.html')
+    elif specialization == 'physiotherapy':
+        return render_template('specializations/physiotherapy.html')
+    elif specialization == 'dermatology':
+        return render_template('specializations/dermatology.html')
+    elif specialization == 'endocrinology':
+        return render_template('specializations/endocrinology.html')
+    elif specialization == 'dentistry':
+        return render_template('specializations/dentistry.html')
+    return render_template('search.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5030, debug=True)

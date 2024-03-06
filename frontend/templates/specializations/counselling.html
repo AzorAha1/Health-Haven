@@ -1,0 +1,17 @@
+{% extends 'default.html' %}
+
+{% block content %}
+    <div class="content-box">
+        <div class="specialization-container">
+            <div class="info-container">
+                <h1 class="title">Counselling</h1>
+                <p class="large-font">Our Counsellors work with people experiencing a wide range of emotional and psychological problems to help them bring about effective change and/or enhance their wellbeing.</p>
+                <p class="small-font">We help people with issues such as depression, anxiety, stress, loss, and relationship difficulties that are affecting their lives.</p>
+                <p class="small-font">Schedule your dermatology appointment today for a healthy and happy mind.</p>
+            </div>
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='images/counselling.png') }}" alt="Counselling Image">
+            </div>
+        </div>
+    </div>
+{% endblock %}

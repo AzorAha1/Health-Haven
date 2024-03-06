@@ -77,7 +77,35 @@ form {
 }
 .large-font {
     font-size: 18px;
+    color: blue;
 }
 .small-font {
     font-size: 14px;
+    color: #ff0000;
+}
+.content-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.specialization-container {
+    display: flex;
+    max-width: 800px;
+}
+
+.info-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.image-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.image-container img {
+    width: 100%; 
+    border-radius: 10px; 
 }
