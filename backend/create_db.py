@@ -1,13 +1,15 @@
-from app import app, db, User
+from app import app, db, User, Doctor
 
 # Set up an application context
 with app.app_context():
     # db.create_all()
-    # user_1 = User(username='Faisal', email='wizfaiz@icloud.com', password='123456')
-    # db.session.add(user_1)
+    # doctor_2 = Doctor(name='Faisal', specialty='Neurology', yearsofexperience=1)
+    # db.session.add(doctor_2)
     # db.session.commit()
-    # users = User.query.all()
-    # for user in users:
-    #     print(f"User ID: {user.user_id}, Username: {user.username}, Email: {user.email}")
-    db.drop_all()
+    # for user in User.query.all():
+    #     print(user)
+    # print(Doctor.query.all())
+
+    for doctor in Doctor.query.all():
+        print(doctor)
    

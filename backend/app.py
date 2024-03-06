@@ -17,11 +17,22 @@ class User(db.Model):
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(30), nullable=False)
 
+    def __repr__(self):
+        return f'the user id is {self.user_id}, the email is {self.email}, the username is {self.username} and the password is {self.password}'
+
 class Doctor(db.Model):
     doctor_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), nullable=False)
     specialty = db.Column(db.String(60), nullable=False)
     yearsofexperience = db.Column(db.Integer(), nullable=False)
+    def __repr__(self):
+        if self.yearsofexperience > 1:
+            return f'Doctor {self.name} specializes in {self.specialty} and has {self.yearsofexperience} years in experience'
+        elif self.yearsofexperience == 1:
+            return f'Doctor {self.name} specializes in {self.specialty} and has {self.yearsofexperience} year in experience'
+        else:
+            return 'Not Qualified'
+            
 
 class Appointment(db.Model):
     __tablename__ = 'appointments'
