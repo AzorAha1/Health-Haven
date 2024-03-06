@@ -64,8 +64,6 @@ def register():
         flash(message=f'Account Created for {form.username.data}', category='success')
         print(form.username.data)
         return redirect(url_for('login'))
-    print(form.data)
-    print(form.errors) # Temporary debug line
     return render_template('register.html', title='Login', form=form)
 @app.route('/about')
 def about():
