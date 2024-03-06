@@ -52,10 +52,26 @@ form {
     align-items: center;
 }
 .error-message {
-    font-size: 20px;
     color: red;
+    font-size: 0.8em;
+    display: block;
     margin-top: 5px;
 }
 .invalid {
-    border-color: red;
+    background-color: #ffdddd;
+    border-color: #ff0000;
+}
+#design-flash {
+    background-color: rgb(14, 179, 14);
+    color: rgb(4, 36, 4);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 15px;
+    width: 350px;
+    border: 1px solid #f5c6cb;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 600px;
+    margin: 0 auto;
 }

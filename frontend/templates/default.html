@@ -18,7 +18,7 @@
             <div class="nav-bio">
                 <a href="{{ url_for('home') }}" class="nav-item">Home</a>
                 <a href="{{ url_for('about') }}" class="nav-item">About</a>
-                <a href="{{ url_for('search') }}" class="nav_item">Search</a>
+                <a href="{{ url_for('search') }}" class="nav-item">Search</a>
             </div>
             <div class="nav-reg">
                 <a href="{{ url_for('login') }}" class="nav-item">Login</a>
@@ -28,7 +28,7 @@
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                    <div class="alert alert-{{ category }}" id="design-flash">{{ message }}</div>
                 {% endfor %}
             {% endif %}
         {% endwith %}

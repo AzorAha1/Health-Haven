@@ -18,7 +18,7 @@ class User(db.Model):
     password = db.Column(db.String(30), nullable=False)
 
     def __repr__(self):
-        return f'the user id is {self.user_id}, the email is {self.email}, the username is {self.username} and the password is {self.password}'
+        return f'the user id is {self.user_id}, the email is {self.email}, the username is {self.username}'
 
 class Doctor(db.Model):
     doctor_id = db.Column(db.Integer, primary_key=True)
@@ -63,7 +63,7 @@ def register():
     if form.validate_on_submit():
         flash(message=f'Account Created for {form.username.data}', category='success')
         print(form.username.data)
-        return redirect(url_for('home'))
+        return redirect(url_for('login'))
     print(form.data)
     print(form.errors) # Temporary debug line
     return render_template('register.html', title='Login', form=form)
