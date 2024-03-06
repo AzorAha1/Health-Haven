@@ -1,15 +1,5 @@
-from app import app, db, User, Doctor
+from app import app, db, User
 
-# Set up an application context
+# Ensure the app context is pushed
 with app.app_context():
-    # db.create_all()
-    # doctor_2 = Doctor(name='Faisal', specialty='Neurology', yearsofexperience=1)
-    # db.session.add(doctor_2)
-    # db.session.commit()
-    # for user in User.query.all():
-    #     print(user)
-    # print(Doctor.query.all())
-
-    for doctor in Doctor.query.all():
-        print(doctor)
-   
+    print(User.query.all())
