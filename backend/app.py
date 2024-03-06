@@ -1,13 +1,17 @@
 from flask import Flask, render_template, url_for,redirect, flash
 from auth import RegisterPatient, LoginPatient
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 from datetime import datetime
+from flask_migrate import Migrate
 
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/styles')
 app.config['SECRET_KEY'] = 'd408adac2785c9429f66f099f0d2a4a4'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///health-haven.db'
 
 db = SQLAlchemy(app=app)
+bcrypt = Bcrypt(app=app)
+migrate = Migrate(app, db)
 
 
 
@@ -16,7 +20,8 @@ class User(db.Model):
     email = db.Column(db.String(60), unique=True, nullable=False)
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(30), nullable=False)
-
+    dob = db.Column(db.DateTime, nullable=False)
+    phonenum = db.Column(db.Integer, nullable=False)
     def __repr__(self):
         return f'the user id is {self.user_id}, the email is {self.email}, the username is {self.username}'
 
@@ -61,7 +66,11 @@ def register():
     """This brings a user to the register page of the app"""
     form = RegisterPatient()
     if form.validate_on_submit():
-        flash(message=f'Account Created for {form.username.data}', category='success')
+        hash_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user_1 = User(username=form.username.data, email=form.email.data, dob=form.dob.data, phonenum=form.phonenum.data, password=hash_password)
+        db.session.add(user_1)
+        db.session.commit()
+        flash(message=f'Account Successfully Created for {form.username.data} Now you can Login', category='success')
         print(form.username.data)
         return redirect(url_for('login'))
     return render_template('register.html', title='Login', form=form)
