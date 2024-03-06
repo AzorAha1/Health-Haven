@@ -59,3 +59,9 @@ form {
 .invalid {
     border-color: red;
 }
+.large-font {
+    font-size: 18px;
+}
+.small-font {
+    font-size: 14px;
+}

@@ -1,7 +1,8 @@
-from flask import Flask, render_template, url_for,redirect, flash
+from flask import Flask, render_template, url_for,redirect, flash, request
 from auth import RegisterPatient, LoginPatient
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
 
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/styles')
 app.config['SECRET_KEY'] = 'd408adac2785c9429f66f099f0d2a4a4'
@@ -63,7 +64,8 @@ def about():
 @app.route('/search', methods=['GET'])
 def search():
     """Returns information that matches the parameters"""
-    return render_template('search.html', title='Search')
+    specialization = request.args.get('specialization')
+    return render_template('search.html', specialization=specialization)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5030, debug=True)
