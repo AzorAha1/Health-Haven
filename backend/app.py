@@ -7,7 +7,8 @@ from flask_migrate import Migrate
 
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/styles')
 app.config['SECRET_KEY'] = 'd408adac2785c9429f66f099f0d2a4a4'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///health-haven.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/health-haven.db'
+
 
 db = SQLAlchemy(app=app)
 bcrypt = Bcrypt(app=app)
@@ -71,7 +72,7 @@ def register():
         db.session.add(user_1)
         db.session.commit()
         flash(message=f'Account Successfully Created for {form.username.data} Now you can Login', category='success')
-        print(form.username.data)
+        print(f"User {form.username.data} added to the database")
         return redirect(url_for('login'))
     return render_template('register.html', title='Login', form=form)
 @app.route('/about')
