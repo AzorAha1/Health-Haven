@@ -4,6 +4,6 @@ from app import app, db, User
 with app.app_context():
     # db.create_all()
     # print("Tables created successfully")
-    user = User.query.first()
-    print(user.phonenum)
+    user = User.query.all()
+    print(user)
     # db.drop_all()

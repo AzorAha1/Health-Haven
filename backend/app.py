@@ -1,10 +1,11 @@
 from flask import Flask, render_template, url_for,redirect, flash, request
-from auth import RegisterPatient, LoginPatient
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from datetime import datetime
 import os
-import os
+from wtforms import StringField, PasswordField, EmailField, SubmitField, DateField, IntegerField
+from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
+from flask_wtf import FlaskForm
 
 # Get the absolute path to the backend folder
 backend_dir = os.path.abspath(os.path.dirname(__file__))
@@ -109,6 +110,37 @@ def search():
     elif specialization == 'dentistry':
         return render_template('specializations/dentistry.html')
     return render_template('search.html')
+
+
+# forms 
+class RegisterPatient(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=30)], render_kw={'class': 'design-field'})
+    email = EmailField(label='Email', validators=[DataRequired(), Email()], render_kw={'class': 'design-field'})
+    password = PasswordField(label='Password', validators=[DataRequired()],render_kw={'class': 'design-field'})
+    dob = DateField(label='Date of birth')
+    phonenum = IntegerField(label='Phone Number')
+    confirm_password = PasswordField(label='Confirm Password', validators=[DataRequired(), EqualTo('password')],render_kw={'class': 'design-field'})
+    submit = SubmitField(label='Submit',render_kw={'class': 'submit-design'})
+
+    def validate_email(self, email):
+        """this method will check if the email is already used by another user"""
+        email = User.query.filter_by(email=email.data).first()
+
+        if email:
+            raise ValidationError(f'email already exists try another one')
+
+    def validate_username(self, username):
+        """this method will check if username is already taken"""
+        username = User.query.filter_by(username=username.data).first()
+        if username:
+            raise ValidationError(f'username is taken try another one')
+
+        
+
+class LoginPatient(FlaskForm):
+    email = EmailField(label='Email', validators=[DataRequired(), Email()], render_kw={'class': 'design-field'})
+    password = PasswordField(label='Password', validators=[DataRequired()], render_kw={'class': 'design-field'})
+    submit = SubmitField(label='Login', render_kw={'class': 'submit-design'})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5030, debug=True)
