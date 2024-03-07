@@ -6,6 +6,7 @@ import os
 from wtforms import StringField, PasswordField, EmailField, SubmitField, DateField, IntegerField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 from flask_wtf import FlaskForm
+from flask_login import LoginManager, UserMixin, login_user
 
 # Get the absolute path to the backend folder
 backend_dir = os.path.abspath(os.path.dirname(__file__))
@@ -22,10 +23,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_file}'
 
 db = SQLAlchemy(app=app)
 bcrypt = Bcrypt(app=app)
+login_manager = LoginManager(app=app)
 
+# load user 
+@login_manager.user_loader
+def load_user(user_id):
+    User.query.get(user_id)
 
-
-class User(db.Model):
+class User(db.Model, UserMixin):
     user_id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(60), unique=True, nullable=False)
     username = db.Column(db.String(20), nullable=False, unique=True)
@@ -67,11 +72,6 @@ def home():
     """This brings a user to the home page of the app"""
     return render_template('home.html', title='Home')
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    """This brings a user to the login page of the app"""
-    form = LoginPatient()
-    return render_template('login.html', title='Login', form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -86,6 +86,20 @@ def register():
         print(f"User {form.username.data} added to the database")
         return redirect(url_for('login'))
     return render_template('register.html', title='Login', form=form)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """This brings a user to the login page of the app"""
+    form = LoginPatient()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user=user)
+            return redirect(url_for('home'))    
+        else:
+            print('unsuccessful')
+            flash(message=f'Login was unsuccessful check username or password', category='success')
+    return render_template('login.html', title='Login', form=form)
 
 @app.route('/about')
 def about():
