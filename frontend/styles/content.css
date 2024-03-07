@@ -1,18 +1,18 @@
 .content-box {
-    background-color: #70707048;
-    padding: 20px;
-    width: 600px;
-    height: auto; /* Adjusted height to accommodate content */
-    margin: 0 auto; /* Center the content box */
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+        background-color: #70707048;
+        padding: 10px;
+        width: 300px;
+        min-height: 40px;
+        margin: 20px 0 0 auto;
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        position: relative;
 }
 .design-font {
-    font-size: 25px;
+    font-size: 14px;
     color: blue;
     padding-bottom: 10px;
 }
@@ -33,7 +33,7 @@
 }
 .title {
     font-size: 30px;
-    color: blue (0, 0, 0); 
+    color: rgb(23, 23, 119) (0, 0, 0); 
     justify-content: baseline;
     text-align: center;
     margin-bottom: 20px; 
