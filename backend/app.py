@@ -1,18 +1,26 @@
 from flask import Flask, render_template, url_for,redirect, flash, request
 from auth import RegisterPatient, LoginPatient
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from datetime import datetime
+import os
+import os
+
+# Get the absolute path to the backend folder
+backend_dir = os.path.abspath(os.path.dirname(__file__))
+# Set the database file path relative to the backend folder
+db_file = os.path.join(backend_dir, 'health-haven.db')
+
+# Update the database URI
+
 
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/styles')
 app.config['SECRET_KEY'] = 'd408adac2785c9429f66f099f0d2a4a4'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/health-haven.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_file}'
 
 
 db = SQLAlchemy(app=app)
 bcrypt = Bcrypt(app=app)
-migrate = Migrate(app, db)
 
 
 
@@ -21,8 +29,8 @@ class User(db.Model):
     email = db.Column(db.String(60), unique=True, nullable=False)
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(30), nullable=False)
-    dob = db.Column(db.DateTime, nullable=False)
-    phonenum = db.Column(db.Integer, nullable=False)
+    dob = db.Column(db.DateTime, nullable=True)
+    phonenum = db.Column(db.Integer, nullable=True)
     def __repr__(self):
         return f'the user id is {self.user_id}, the email is {self.email}, the username is {self.username}'
 
