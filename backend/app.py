@@ -6,7 +6,7 @@ import os
 from wtforms import StringField, PasswordField, EmailField, SubmitField, DateField, IntegerField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 from flask_wtf import FlaskForm
-from flask_login import LoginManager, UserMixin, login_user
+from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user
 
 # Get the absolute path to the backend folder
 backend_dir = os.path.abspath(os.path.dirname(__file__))
@@ -24,11 +24,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_file}'
 db = SQLAlchemy(app=app)
 bcrypt = Bcrypt(app=app)
 login_manager = LoginManager(app=app)
+login_manager.init_app(app=app)
 
-# load user 
+# load user
 @login_manager.user_loader
 def load_user(user_id):
-    User.query.get(user_id)
+    return User.query.get(int(user_id))
 
 class User(db.Model, UserMixin):
     user_id = db.Column(db.Integer, primary_key=True)
@@ -39,6 +40,9 @@ class User(db.Model, UserMixin):
     phonenum = db.Column(db.Integer, nullable=True)
     def __repr__(self):
         return f'the user id is {self.user_id}, the email is {self.email}, the username is {self.username}'
+    
+    def get_id(self):
+        return str(self.user_id)
 
 class Doctor(db.Model):
     doctor_id = db.Column(db.Integer, primary_key=True)
@@ -90,15 +94,19 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """This brings a user to the login page of the app"""
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = LoginPatient()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
+            print(form.email.data, form.password.data)
             login_user(user=user)
+            print(form.email.data, form.password.data)
             return redirect(url_for('home'))    
         else:
             print('unsuccessful')
-            flash(message=f'Login was unsuccessful check username or password', category='success')
+            flash(message=f'Login was unsuccessful check username or password', category='danger')
     return render_template('login.html', title='Login', form=form)
 
 @app.route('/about')
@@ -124,6 +132,11 @@ def search():
     elif specialization == 'dentistry':
         return render_template('specializations/dentistry.html')
     return render_template('search.html')
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 
 # forms 

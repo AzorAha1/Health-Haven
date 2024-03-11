@@ -2,12 +2,23 @@
 {% block content%}
     <div class="content-box">
         <h2 class="title">Login</h2>
-        <label for="{{ form.email.id }}" class="design-font">{{ form.email.label }}</label><br>
-        {{ form.email }}<br>
-        <label for="{{ form.password.id }}" class="design-font">{{ form.password.label }}</label><br>
-        {{ form.password }}<br>
-        
-        {{ form.submit }}
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <label for="{{ form.email.id }}" class="design-font">{{ form.email.label }}</label><br>
+            {% if form.email.errors %}
+            {{ form.email(class='invalid') }}
+                {% for error in form.email.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            {% else %}
+                {{ form.email }}<br>
+            {% endif %}
+            <label for="{{ form.password.id }}" class="design-font">{{ form.password.label }}</label><br>
+            {{ form.password }}<br>
+            
+            {{ form.submit }}
+        </form>
+       
     </div>
     
 {% endblock %}
