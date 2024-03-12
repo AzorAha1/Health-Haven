@@ -1,5 +1,81 @@
 {% extends 'default.html' %}
-{% block content%}
-    <h1 style="font-weight: bold; margin-left: 20px;">Your Health, Our Priority</h1>
-    <span style="margin-left: 20px; color: rgb(61, 61, 61); font-family: 'Dancing Script', cursive; font-size: 21px;"> Our main goal is to give you a comfortable platform with choices</span>
+
+{% block content %}
+    <div class="home-content-box">
+        <h1 style="font-weight: bold;">Your Health, Our Priority</h1>
+        <p>
+            <span style="color: #333; font-family: 'Dancing Script', cursive; font-size: 28px; font-weight: bold;">
+                Our main goal is to give you a comfortable platform with choices.
+                We also use expert knowledge and skills to diagnose and treat patients while retaining ultimate clinical responsibility for their care. Health-Haven is here for you!
+            </span>
+        </p>
+    </div>
+
+    <a href="#medical-departments" class="scroll-down-button" onclick="scrollToDepartments()"></a>
+
+    <section id="medical-departments">
+        <h2>Medical Departments</h2>
+        <div class="department-icons">
+            <div class="department-icon">
+                <img src="{{ url_for('static', filename='images/generalMed-icon.jpg') }}" alt="Department 1">
+                <p>General Medicine</p>
+            </div>
+            <div class="department-icon">
+                <img src="{{ url_for('static', filename='images/physiotherapy-icon.jpg') }}" alt="Department 2">
+                <p>Physiotherapy</p>
+            </div>
+            <div class="department-icon">
+                <img src="{{ url_for('static', filename='images/dermatology-icon.jpg') }}" alt="Department 3">
+                <p>Dermatology</p>
+            </div>
+            <div class="department-icon">
+                <img src="{{ url_for('static', filename='images/endocrinology-icon.jpg') }}" alt="Department 4">
+                <p>Endocrinology</p>
+            </div>
+            <div class="department-icon">
+                <img src="{{ url_for('static', filename='images/consel-icon.png') }}" alt="Department 5">
+                <p>Counselling</p>
+            </div>
+            <div class="department-icon">
+                <img src="{{ url_for('static', filename='images/dental-icon.jpg') }}" alt="Department 1">
+                <p>Dentistry</p>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .scroll-down-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Style for department icons */
+        .department-icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .department-icon {
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        .department-icon img {
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+
+    <script>
+        function scrollToDepartments() {
+            document.querySelector('#medical-departments').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>    
 {% endblock %}
