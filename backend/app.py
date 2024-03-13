@@ -56,17 +56,21 @@ class Doctor(db.Model):
             return f'Doctor {self.name} specializes in {self.specialty} and has {self.yearsofexperience} year in experience'
         else:
             return 'Not Qualified'
-            
+    
 
 class Appointment(db.Model):
     __tablename__ = 'appointments'
     appointment_id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, default=datetime.utcnow)
+    date = db.Column(db.DateTime, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
     doctor_id = db.Column(db.Integer, db.ForeignKey('doctor.doctor_id'))
 
     user = db.relationship('User', backref=db.backref('appointments', lazy=True))
     doctor = db.relationship('Doctor', backref=db.backref('appointments', lazy=True))
+
+    def __repr__(self):
+        newdate = self.date.strftime('%d-%m-%Y')
+        return f'Appointment with {self.doctor} requested on {newdate}, we will get back to you soon for the meetup date'
 
 
     
@@ -137,6 +141,38 @@ def search():
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
+@app.route('/setup_appointment', methods=['GET', 'POST'])
+def setup_appointment():
+    """set appointment"""
+    doctors = Doctor.query.all()
+    return render_template('setup_appointment.html', doctors=doctors)
+
+@app.route('/my_appointments', methods=['GET', 'POST'])
+def my_appointments():
+    user_id = request.form.get('user_id')
+    doctor_id = request.form.get('doctor_id')
+
+
+    if not user_id or not doctor_id or  doctor_id == 'no choice':
+        flash(message='Please Select a Doctor', category='danger')
+        return redirect(url_for('setup_appointment'))
+    else:
+        my_appointments = Appointment(user_id=user_id, doctor_id=doctor_id)
+        db.session.add(my_appointments)
+        db.session.commit()
+        flash('Appointment set with Doctor', category='success')
+        return redirect(url_for('home'))
+@app.route('/show_appointments/')
+def show_appointments():
+    if current_user.is_authenticated:
+        user_id = current_user.get_id()
+        appointments = Appointment.query.filter_by(user_id=user_id).all()
+        return render_template('show_ap.html', appointments=appointments)
+    else:
+        return redirect(url_for('login'))
+    
+    
 
 
 # forms 
