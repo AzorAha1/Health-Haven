@@ -1,81 +1,53 @@
 {% extends 'default.html' %}
 
 {% block content %}
-    <div class="home-content-box">
-        <h1 style="font-weight: bold;">Your Health, Our Priority</h1>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Haven</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../styles/content.css') }}">
+
+    <div class="container">
+        <div class="slides slide1">
+            <div class="text-container">
+                <h1 style="font-weight: bold;">Your Health, Our Priority</h1>
+                <p>
+                    <span style="color: #333; font-family: 'Dancing Script', cursive; font-size: 28px; font-weight: bold;">
+                    Our main goal is to give you a comfortable platform with choices.
+                    We also use expert knowledge and skills to diagnose and treat patients while retaining ultimate clinical responsibility for their care. Health-Haven is here for you!
+                    </span>
+                </p>
+            </div>
+            <div class="know-more">
+                <a href="{{ url_for('about') }}" class="know-more-link">Know more</a>
+            </div>
+        </div>
+        <div class="slides slide2">
+            <h2>The Departments Available.</h2>
         <p>
             <span style="color: #333; font-family: 'Dancing Script', cursive; font-size: 28px; font-weight: bold;">
-                Our main goal is to give you a comfortable platform with choices.
-                We also use expert knowledge and skills to diagnose and treat patients while retaining ultimate clinical responsibility for their care. Health-Haven is here for you!
+                We offer a wide range of health care facilities
             </span>
         </p>
-    </div>
-
-    <a href="#medical-departments" class="scroll-down-button" onclick="scrollToDepartments()"></a>
-
-    <section id="medical-departments">
-        <h2>Medical Departments</h2>
         <div class="department-icons">
             <div class="department-icon">
                 <img src="{{ url_for('static', filename='images/generalMed-icon.jpg') }}" alt="Department 1">
-                <p>General Medicine</p>
             </div>
             <div class="department-icon">
-                <img src="{{ url_for('static', filename='images/physiotherapy-icon.jpg') }}" alt="Department 2">
-                <p>Physiotherapy</p>
+                <img src="{{ url_for('static', filename='images/physiotherapy-icon.jpg') }}">
             </div>
             <div class="department-icon">
-                <img src="{{ url_for('static', filename='images/dermatology-icon.jpg') }}" alt="Department 3">
-                <p>Dermatology</p>
+                <img src="{{ url_for('static', filename='images/dermatology-icon.jpg') }}">
             </div>
             <div class="department-icon">
-                <img src="{{ url_for('static', filename='images/endocrinology-icon.jpg') }}" alt="Department 4">
-                <p>Endocrinology</p>
+                <img src="{{ url_for('static', filename='images/endocrinology-icon.jpg') }}">
             </div>
             <div class="department-icon">
-                <img src="{{ url_for('static', filename='images/consel-icon.png') }}" alt="Department 5">
-                <p>Counselling</p>
+                <img src="{{ url_for('static', filename='images/consel-icon.png') }}">
             </div>
             <div class="department-icon">
-                <img src="{{ url_for('static', filename='images/dental-icon.jpg') }}" alt="Department 1">
-                <p>Dentistry</p>
+                <img src="{{ url_for('static', filename='images/dental-icon.jpg') }}">
             </div>
+
         </div>
-    </section>
+    </div>
 
-    <style>
-        .scroll-down-button {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Style for department icons */
-        .department-icons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .department-icon {
-            text-align: center;
-            margin: 0 10px;
-        }
-
-        .department-icon img {
-            width: 60px;
-            height: 60px;
-        }
-    </style>
-
-    <script>
-        function scrollToDepartments() {
-            document.querySelector('#medical-departments').scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    </script>    
 {% endblock %}

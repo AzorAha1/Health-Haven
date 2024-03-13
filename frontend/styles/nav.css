@@ -21,7 +21,7 @@
     color: rgb(32, 32, 179);
 }
 body {
-    background-image: url('../styles/images/bg2.jpeg');
+    background-color: lightblue
 }
 .nav-item:hover {
     color: rgb(129, 105, 75);

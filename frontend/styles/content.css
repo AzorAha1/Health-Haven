@@ -145,33 +145,84 @@ form {
     width: 600px;
     margin: 0 auto;
 }
-.home-content-box {
-    padding: 20px;
-    width: 600px;
-    height: auto;
-    margin: 0 auto 0 20px;
-    border-radius: 20px;
+.container {
+    width: 100%;
+    height: 100vh;
+}
+.slides {
+    width: 100%;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align text to the left */
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    color: black;
+}
+.slides img {
+    width: 350px;
+}
+.slides h2 {
+    font-size: 70px;
+    font-weight: 600;
+    max-width: 650px;
+}
+.slide1 {
+
+    background-image: url(../styles/images/bg2.jpeg);
+}
+.slide2 {
+    background-image: url(../styles/images/bg3.jpeg);
 }
 
-.home-content-box h1,
-.home-content-box p {
-    margin-left: 20px; /* Add margin to create space from the left */
+/* Style for department icons */
+.department-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
 }
 
-@media (max-width: 768px) {
-    .content-box {
-        width: 50%; /* Adjust the width as needed for smaller screens */
-        height: auto;
-        margin: 20px auto; /* Center the content box */
-    }
+.department-icon {
+    text-align: center;
+    margin: 0 10px;
+    width: 150px; /* Adjust the width as needed */
+}
+
+.department-icon img {
+    width: 190px;
+    height: 190px;
+}
+
+/* Style for text in slide 1 */
+.text-container {
+    text-align: left;
+    max-width: 50%; /* Adjust the width as needed */
+    margin-right: auto;
+    padding-right: 0 auto 20px; /* Adjust the padding as needed */
+}
+
+.know-more {
+    text-align: left; /* Align text to the right */
+    max-width: 50%;
+    margin-right: 20px; /* Adjust the margin as needed */
+    padding-right: 0 auto 20px;
+    justify-content: bottom;
+}
+
+.know-more-link {
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block; /* Make the link a block element */
+    margin-bottom: 20px; /* Add some top margin for separation */
 }
 
 .about-content {
-    font-size: medium;
-    margin: 0 20px 0 auto;
-    color: black;
-
+    font-size: 25px;
+    margin: 20px;
+    background-image: url(../styles/images/bg1.jpeg);
+    padding-inline-end: 50%;
+    text-align: justify;
 }
