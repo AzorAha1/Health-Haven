@@ -1,0 +1,6 @@
+{% extends 'default.html' %}
+{% block content %}
+    {% for appointment in appointments %}
+        <h1>{{ appointment }}</h1>
+    {% endfor %}
+{% endblock %}

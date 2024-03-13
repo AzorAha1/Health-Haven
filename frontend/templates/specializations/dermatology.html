@@ -6,7 +6,7 @@
             <div class="info-container">
                 <h1 class="title">Dermatology</h1>
                 <p class="large-font">We have a dermatology department that has the most experienced doctors who will help you with any sort of skin disease. We provide routine check-ups to advance dermatology procedures.</p>
-                <p class="small-font">Schedule your dermatology appointment today for healthy and shining skin.</p>          
+                <a class="small-font" href="{{ url_for('setup_appointment') }}">Schedule your dermatology appointment today for healthy and shining skin.</a>          
             </div>
             <div class="image-container">
                 <img src="{{ url_for('static', filename='images/dermatologist.png') }}" alt="Dermatology Image">

@@ -1,0 +1,18 @@
+{% extends 'default.html' %}
+{% block content %}
+    <form action="{{ url_for('my_appointments') }}" method="post">
+        <div class="content-box">
+            <center>Select Doctor
+                <input type="hidden" name="user_id" value="{{ current_user.get_id() }}">
+                <select name="doctor_id" id="doctor_id" class="design-field">
+                    <option value="no choice">--Choose--</option>
+                    {% for doctor in doctors %}
+                        <option value="{{ doctor.doctor_id }}">{{ doctor.name }} - {{ doctor.specialty }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Submit" class="submit-design">  
+            </center>
+        </div> 
+             
+    </form>
+{% endblock %}

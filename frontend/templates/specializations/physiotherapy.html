@@ -6,7 +6,7 @@
             <div class="info-container">
                 <h1 class="title">Physiotherapy</h1>
                 <p class="large-font">Our Physiotherapists are one of the best in the country, who have the experience and skills to bring you back to full health.</p>
-                <p class="small-font">Schedule your dermatology appointment today for a restored and healthy body.</p>        
+                <a class="small-font" href="{{ url_for('setup_appointment') }}">Schedule your dermatology appointment today for a restored and healthy body.</a>        
             </div>
             <div class="image-container">
                 <img src="{{ url_for('static', filename='images/Physiotherapy.jpg') }}" alt="Physiotherapy Image">

@@ -83,6 +83,9 @@ form {
     font-size: 14px;
     color: #ff0000;
 }
+.small-font:hover{
+    color: rgb(129, 105, 75);;
+}
 .content-box {
     display: flex;
     justify-content: center;
