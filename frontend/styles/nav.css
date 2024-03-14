@@ -21,7 +21,7 @@
     color: rgb(32, 32, 179);
 }
 body {
-    background-color: lightblue
+    background: linear-gradient(454deg, #4f4080, #9553ff)
 }
 .nav-item:hover {
     color: rgb(129, 105, 75);
