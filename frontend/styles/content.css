@@ -235,3 +235,23 @@ form {
     padding-inline-end: 50%;
     text-align: justify;
 }
+
+.appointment-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.appointment-card {
+    background-color: #8b9daf;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 350px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.appointment-card h3 {
+    margin-top: 0;
+}

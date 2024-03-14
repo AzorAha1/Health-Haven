@@ -21,7 +21,8 @@
     color: rgb(32, 32, 179);
 }
 body {
-    background: linear-gradient(454deg, #4f4080, #9553ff)
+    /* background: linear-gradient(454deg, #4f4080, #9553ff) */
+    background-color: white;
 }
 .nav-item:hover {
     color: rgb(129, 105, 75);
