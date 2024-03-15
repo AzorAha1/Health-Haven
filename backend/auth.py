@@ -14,18 +14,18 @@
 #     confirm_password = PasswordField(label='Confirm Password', validators=[DataRequired(), EqualTo('password')],render_kw={'class': 'design-field'})
 #     submit = SubmitField(label='Submit',render_kw={'class': 'submit-design'})
 
-#     def validate_email(self, email):
-#         """this method will check if the email is already used by another user"""
-#         email = User.query.filter_by(email=email).first()
+    # def validate_email(self, email):
+    #     """this method will check if the email is already used by another user"""
+    #     email = User.query.filter_by(email=email).first()
 
-#         if email:
-#             raise ValidationError(f'{email} already exists try another one')
+    #     if email:
+    #         raise ValidationError(f'{email} already exists try another one')
 
-#     def validate_user(self, username):
-#         """this method will check if username is already taken"""
-#         username = User.query.filter_by(username=username).first()
-#         if username:
-#             raise ValidationError(f'{username} is taken try another one')
+    # def validate_user(self, username):
+    #     """this method will check if username is already taken"""
+    #     username = User.query.filter_by(username=username).first()
+    #     if username:
+    #         raise ValidationError(f'{username} is taken try another one')
 
         
 
