@@ -10,15 +10,17 @@ from flask_login import LoginManager, UserMixin, login_user, current_user, logou
 
 # Get the absolute path to the backend folder
 backend_dir = os.path.abspath(os.path.dirname(__file__))
-# Set the database file path relative to the backend folder
-db_file = os.path.join(backend_dir, 'health-haven.db')
+# # Set the database file path relative to the backend folder
+# db_file = os.path.join(backend_dir, 'health-haven.db')
 
 # Update the database URI
 
 
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/styles')
 app.config['SECRET_KEY'] = 'd408adac2785c9429f66f099f0d2a4a4'
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_file}'
+# app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_file}'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://healthhaven_postgresql_user:R4UVek96nE04g781udjBcwkrcUoYLkYG@dpg-cnveif2cn0vc73c82b00-a.oregon-postgres.render.com/healthhaven_postgresql'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://healthhaven_postgresql_user:R4UVek96nE04g781udjBcwkrcUoYLkYG@dpg-cnveif2cn0vc73c82b00-a:5432/healthhaven-postgresql'
 
 
 db = SQLAlchemy(app=app)
