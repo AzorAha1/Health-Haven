@@ -4,3 +4,4 @@ Gunicorn
 Flask-WTF
 Flask-Login
 Flask-Bcrypt
+psycopg2-binary
