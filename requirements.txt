@@ -6,4 +6,5 @@ Flask-Login
 Flask-Bcrypt
 psycopg2
 flask-migrate
+email_validator
 
