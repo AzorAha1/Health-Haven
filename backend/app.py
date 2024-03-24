@@ -3,6 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from datetime import datetime
 import os
+from flask_migrate import Migrate
+
+
 from wtforms import StringField, PasswordField, EmailField, SubmitField, DateField, IntegerField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 from flask_wtf import FlaskForm
@@ -11,7 +14,7 @@ from flask_login import LoginManager, UserMixin, login_user, current_user, logou
 # Get the absolute path to the backend folder
 backend_dir = os.path.abspath(os.path.dirname(__file__))
 # # Set the database file path relative to the backend folder
-# db_file = os.path.join(backend_dir, 'health-haven.db')
+db_file = os.path.join(backend_dir, 'health-haven.db')
 
 # Update the database URI
 
@@ -19,14 +22,15 @@ backend_dir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/styles')
 app.config['SECRET_KEY'] = 'd408adac2785c9429f66f099f0d2a4a4'
 # app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_file}'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://healthhaven_postgresql_user:R4UVek96nE04g781udjBcwkrcUoYLkYG@dpg-cnveif2cn0vc73c82b00-a.oregon-postgres.render.com/healthhaven_postgresql'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://healthhaven_postgresql_user:R4UVek96nE04g781udjBcwkrcUoYLkYG@dpg-cnveif2cn0vc73c82b00-a:5432/healthhaven-postgresql'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://healthhaven_postgresql_9eiw_user:6i86UXkj2uD73hfGQ6o4WANJRNkxzqMu@dpg-cnvlmkqcn0vc73c8vgi0-a.oregon-postgres.render.com/healthhaven_postgresql_9eiw'
+# postgres://healthhaven_postgresql_user:R4UVek96nE04g781udjBcwkrcUoYLkYG@dpg-cnveif2cn0vc73c82b00-a/healthhaven_postgresql
 
 
 db = SQLAlchemy(app=app)
 bcrypt = Bcrypt(app=app)
 login_manager = LoginManager(app=app)
 login_manager.init_app(app=app)
+migrate = Migrate(app, db)
 
 # load user
 @login_manager.user_loader
