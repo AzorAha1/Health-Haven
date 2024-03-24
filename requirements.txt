@@ -4,4 +4,6 @@ Gunicorn
 Flask-WTF
 Flask-Login
 Flask-Bcrypt
-psycopg2-binary
+psycopg2=2.9.9
+flask-migrate
+
