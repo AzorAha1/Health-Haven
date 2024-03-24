@@ -41,9 +41,9 @@ class User(db.Model, UserMixin):
     user_id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(60), unique=True, nullable=False)
     username = db.Column(db.String(20), nullable=False, unique=True)
-    password = db.Column(db.String(30), nullable=False)
+    password = db.Column(db.String(255), nullable=False)
     dob = db.Column(db.DateTime, nullable=True)
-    phonenum = db.Column(db.Integer, nullable=True)
+    phonenum = db.Column(db.String(20), nullable=True)
     def __repr__(self):
         return f'the user id is {self.user_id}, the email is {self.email}, the username is {self.username}'
     
